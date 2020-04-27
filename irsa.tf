@@ -15,7 +15,7 @@ resource "aws_iam_policy" "external_dns" {
   count = var.eks ? 1 : 0
 
   name_prefix = "external_dns"
-  description = "EKS cluster-autoscaler policy for cluster ${var.cluster_domain_name}"
+  description = "Policy that allows change DNS entries for the externalDNS servicefor {var.cluster_domain_name}"
   policy      = data.aws_iam_policy_document.external_dns_irsa.json
 }
 
