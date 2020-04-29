@@ -40,6 +40,6 @@ data "aws_iam_policy_document" "external_dns" {
 resource "aws_iam_role_policy" "external_dns" {
   count  = var.eks ? 0 : 1
   name   = "route53"
-  role   = aws_iam_role.external_dns.id
+  role   = aws_iam_role.external_dns.0.id
   policy = data.aws_iam_policy_document.external_dns.json
 }
