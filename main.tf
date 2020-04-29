@@ -9,7 +9,7 @@ resource "helm_release" "external_dns" {
   version   = local.external_dns_version
 
   values = [templatefile("${path.module}/templates/values.yaml.tpl", {
-    domainFilters = lookup(var.cluster_r53_domainfilters, terraform.workspace, [var.cluster_domain_name])
+    domainFilters = var.cluster_r53_domainfilters
     iam_role      = aws_iam_role.externaldns.name
     cluster       = terraform.workspace
   })]
