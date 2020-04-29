@@ -1,49 +1,29 @@
 locals {
-  live_workspace = "live-1"
+  external_dns_version = "2.6.4"
 }
 
 resource "helm_release" "external_dns" {
   name      = "external-dns"
   chart     = "stable/external-dns"
   namespace = "kube-system"
-  version   = "2.6.4"
+  version   = local.external_dns_version
 
-  values = [
-    <<EOF
-image:
-  tag: 0.5.17-debian-9-r0
-sources:
-  - service
-  - ingress
-provider: aws
-aws:
-  region: eu-west-2
-  zoneType: public
-domainFilters:
-  ${terraform.workspace == local.live_workspace ? "" : format(
-    "- %s",
-    data.terraform_remote_state.cluster.outputs.cluster_domain_name,
-)}
-rbac:
-  create: true
-  apiVersion: v1
-  serviceAccountName: default
-txtPrefix: "_external_dns."
-logLevel: info
-podAnnotations:
-  iam.amazonaws.com/role: "${aws_iam_role.external_dns.name}"
-EOF
-,
-]
+  values = [templatefile("${path.module}/templates/values.yaml.tpl", {
+    domainFilters = lookup(var.cluster_r53_domainfilters, terraform.workspace, [var.cluster_domain_name])
+    iam_role      = aws_iam_role.externaldns.name
+    cluster       = terraform.workspace
+  })]
 
-depends_on = [
-  helm_release.kiam,
-  var.dependence_deploy,
-  var.dependence_prometheus,
-  var.dependence_opa,
-]
+  depends_on = [
+    var.dependence_kiam,
+    var.dependence_deploy,
+    # TODO: Remove prometheus dependency
+    # var.dependence_prometheus,
+    # var.dependence_opa
+  ]
 
-lifecycle {
-  ignore_changes = [keyring]
-}
+
+  lifecycle {
+    ignore_changes = [keyring]
+  }
 }
