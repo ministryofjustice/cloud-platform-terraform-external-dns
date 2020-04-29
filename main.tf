@@ -39,6 +39,7 @@ EOF
 depends_on = [
   helm_release.kiam,
   var.dependence_deploy,
+  var.dependence_prometheus,
   var.dependence_opa,
 ]
 
