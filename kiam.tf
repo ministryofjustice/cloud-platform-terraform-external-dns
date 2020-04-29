@@ -1,7 +1,6 @@
 # IAM Role for ServiceAccounts: Kops clusters 
 
 data "aws_iam_policy_document" "external_dns_assume" {
-  count = var.eks ? 0 : 1
   statement {
     actions = ["sts:AssumeRole"]
 
@@ -24,7 +23,7 @@ data "aws_iam_policy_document" "external_dns" {
 
     resources = [format(
       "arn:aws:route53:::hostedzone/%s",
-      terraform.workspace == local.live_workspace ? "*" : var.hostedzone,
+      terraform.workspace == local.live_workspace ? "*" : var.hostzone,
     )]
   }
 

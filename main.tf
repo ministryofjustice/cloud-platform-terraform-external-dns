@@ -1,5 +1,6 @@
 locals {
   external_dns_version = "2.6.4"
+  live_workspace       = "live-1"
 }
 
 resource "helm_release" "external_dns" {
@@ -9,7 +10,7 @@ resource "helm_release" "external_dns" {
   version   = local.external_dns_version
 
   values = [templatefile("${path.module}/templates/values.yaml.tpl", {
-    domainFilters = var.cluster_r53_domainfilters
+    domainFilters = lookup(var.cluster_r53_domainfilters, terraform.workspace, [var.cluster_domain_name])
     iam_role      = aws_iam_role.externaldns.name
     cluster       = terraform.workspace
   })]
