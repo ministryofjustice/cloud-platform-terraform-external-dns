@@ -37,9 +37,9 @@ EOF
 ]
 
 depends_on = [
-  null_resource.deploy,
   helm_release.kiam,
-  module.opa.helm_opa_status,
+  var.dependence_deploy,
+  var.dependence_opa,
 ]
 
 lifecycle {
