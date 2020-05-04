@@ -1,5 +1,9 @@
 # IAM Role for ServiceAccounts: Kops clusters 
 
+locals {
+  live_workspace = "live-1"
+}
+
 data "aws_iam_policy_document" "external_dns_assume" {
   statement {
     actions = ["sts:AssumeRole"]
