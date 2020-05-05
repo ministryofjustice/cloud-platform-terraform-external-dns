@@ -27,12 +27,6 @@ variable "cluster_r53_domainfilters" {
   }
 }
 
-variable "cluster_r53_resource_maps" {
-  default = {
-    manager = ["arn:aws:route53:::hostedzone/Z1OWR28V4Q2RTU", "arn:aws:route53:::hostedzone/Z5C82RHBFD2NI"]
-  }
-}
-
 variable "cluster_domain_name" {
   description = "The cluster domain used for externalDNS"
 }
