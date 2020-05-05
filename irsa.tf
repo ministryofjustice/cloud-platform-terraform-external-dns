@@ -32,7 +32,10 @@ data "aws_iam_policy_document" "external_dns_irsa" {
   }
 
   statement {
-    actions   = ["route53:ListHostedZonesByName"]
+    actions = [
+      "route53:ListHostedZones",
+      "route53:ListResourceRecordSets",
+    ]
     resources = ["*"]
   }
 }
