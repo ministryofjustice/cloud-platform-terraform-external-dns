@@ -22,7 +22,7 @@ variable "dependence_kiam" {
 
 variable "cluster_r53_domainfilters" {
   default = {
-    live-1  = ["*"]
+    live-1  = [""]
     manager = ["manager.cloud-platform.service.justice.gov.uk.", "cloud-platform.service.justice.gov.uk."]
   }
 }
