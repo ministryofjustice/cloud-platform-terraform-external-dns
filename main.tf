@@ -1,6 +1,5 @@
 locals {
   external_dns_version = "2.6.4"
-  live_workspace       = "live-1"
 }
 
 resource "helm_release" "external_dns" {
@@ -20,10 +19,7 @@ resource "helm_release" "external_dns" {
 
   depends_on = [
     var.dependence_kiam,
-    var.dependence_deploy,
-    # TODO: Remove prometheus dependency
-    # var.dependence_prometheus,
-    # var.dependence_opa
+    var.dependence_deploy
   ]
 
 
