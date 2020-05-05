@@ -21,10 +21,7 @@ data "aws_iam_policy_document" "external_dns" {
   statement {
     actions = ["route53:ChangeResourceRecordSets"]
 
-    resources = [format(
-      "arn:aws:route53:::hostedzone/%s",
-      terraform.workspace == local.live_workspace ? "*" : var.hostzone,
-    )]
+    resources = var.hostzone
   }
 
   statement {

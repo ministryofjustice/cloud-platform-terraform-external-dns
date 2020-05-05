@@ -23,7 +23,7 @@ data "aws_iam_policy_document" "external_dns_irsa" {
   statement {
     actions = ["route53:ChangeResourceRecordSets"]
 
-    resources = lookup(var.cluster_r53_resource_maps, terraform.workspace, ["arn:aws:route53:::hostedzone/${var.hostzone}"])
+    resources = var.hostzone
   }
 
   statement {
