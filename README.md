@@ -39,27 +39,30 @@ module "external_dns" {
 ```
 
   # This module requires kiam on KOps clusters
+  ```hcl
   dependence_kiam   = helm_release.kiam
+  ```
 
   EKS doesn't use kiam so this can be replaced with an empty string.
 
   # This section is for EKS
+  ```hcl
   eks                         = true
   eks_cluster_oidc_issuer_url = data.terraform_remote_state.cluster.outputs.cluster_oidc_issuer_url
 }
-```
+  ```
 
 ## Inputs
 
-| Name                        | Description                                                   | Type     | Default | Required |
-|-----------------------------|---------------------------------------------------------------|:--------:|:-------:|:--------:|
-| dependence_kiam             | Kiam Dependence variable                                               | string   |         | yes |
-| dependence_deploy           | Deploy (helm) dependence variable                                      | string   |         | yes |
-| iam_role_nodes              | Nodes IAM role ARN in order to create the KIAM/Kube2IAM                | string   |         | yes |
-| hostzone                    | To solve ACME Challenges. Scope should be limited to hostzone. If star (*) is used certmanager will control all hostzones | string | | yes |
-| cluster_domain_name         | Value used for externalDNS annotations and certmanager                 | string   |         | yes |
-| eks                         | Are we deploying in EKS or not?                                        | bool     | false   | no |
-| eks_cluster_oidc_issuer_url | The OIDC issuer URL from the cluster, it is used for IAM ServiceAccount integration | string     |  | no |
+| Name                        | Description                                                            | Type     | Default | Required |
+|-----------------------------|---------------------------------------------------------------         |:--------:|:-------:|:--------:|
+| dependence_kiam             | Kiam Dependence variable                                               | string   |         | yes      |
+| dependence_deploy           | Deploy (helm) dependence variable                                      | string   |         | yes      |
+| iam_role_nodes              | Nodes IAM role ARN in order to create the KIAM/Kube2IAM                | string   |         | yes      |
+| hostzone                    | To solve ACME Challenges. Scope should be limited to hostzone.         | string   |         | yes      |
+| cluster_domain_name         | Value used for externalDNS annotations and certmanager                 | string   |         | yes      |
+| eks                         | Are we deploying in EKS or not?                                        | bool     | false   | no       |
+| eks_cluster_oidc_issuer_url | The OIDC issuer URL from the cluster, used for IAM ServiceAccount      | string   |         | no       |
 
 
 ## Outputs
