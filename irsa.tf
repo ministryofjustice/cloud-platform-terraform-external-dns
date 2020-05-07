@@ -8,7 +8,7 @@ module "iam_assumable_role_admin" {
   role_name                     = "external-dns.${var.cluster_domain_name}"
   provider_url                  = var.eks_cluster_oidc_issuer_url
   role_policy_arns              = [var.eks ? aws_iam_policy.external_dns.0.arn : ""]
-  oidc_fully_qualified_subjects = ["system:serviceaccount:external-dns:external-dns"]
+  oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:external-dns"]
 }
 
 resource "aws_iam_policy" "external_dns" {
