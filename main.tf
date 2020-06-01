@@ -1,16 +1,16 @@
 locals {
-  external_dns_version = "2.6.4"
+  external_dns_version = "3.1.0"
 }
 
-data "helm_repository" "stable" {
-  name = "stable"
-  url  = "https://kubernetes-charts.storage.googleapis.com"
+data "helm_repository" "bitnami" {
+  name = "bitnami"
+  url  = "https://charts.bitnami.com/bitnami"
 }
 
 resource "helm_release" "external_dns" {
   name       = "external-dns"
   chart      = "external-dns"
-  repository = data.helm_repository.stable.metadata[0].name
+  repository = data.helm_repository.bitnami.metadata[0].name
   namespace  = "kube-system"
   version    = local.external_dns_version
 

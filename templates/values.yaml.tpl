@@ -1,5 +1,5 @@
 image:
-  tag: 0.5.17-debian-9-r0
+  tag: 0.7.1-debian-10-r68
 sources:
   - service
   - ingress
@@ -22,5 +22,6 @@ rbac:
 txtPrefix: "_external_dns."
 txtOwnerId: ${cluster}
 logLevel: info
+# policy: sync
 podAnnotations:
   iam.amazonaws.com/role: "${iam_role}"
