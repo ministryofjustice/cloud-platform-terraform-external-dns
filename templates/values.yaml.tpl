@@ -22,6 +22,6 @@ rbac:
 txtPrefix: "_external_dns."
 txtOwnerId: ${cluster}
 logLevel: info
-# policy: sync
+policy: sync
 podAnnotations:
   iam.amazonaws.com/role: "${iam_role}"
