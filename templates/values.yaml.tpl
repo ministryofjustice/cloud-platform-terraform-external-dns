@@ -14,9 +14,11 @@ domainFilters:
 rbac:
   create: true
   apiVersion: v1
-  serviceAccountName: external-dns
+serviceAccount:
+  create: true
+  name: external-dns
 %{ if eks ~}
-  serviceAccountAnnotations:
+  annotations:
     eks.amazonaws.com/role-arn: "${eks_service_account}"
 %{ endif ~}
 txtPrefix: "_external_dns."
