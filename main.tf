@@ -24,8 +24,7 @@ resource "helm_release" "external_dns" {
   })]
 
   depends_on = [
-    var.dependence_kiam,
-    var.dependence_deploy
+    var.dependence_kiam
   ]
 
 
