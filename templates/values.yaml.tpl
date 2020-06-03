@@ -1,5 +1,5 @@
 image:
-  tag: 0.5.17-debian-9-r0
+  tag: 0.7.1-debian-10-r68
 sources:
   - service
   - ingress
@@ -14,13 +14,16 @@ domainFilters:
 rbac:
   create: true
   apiVersion: v1
-  serviceAccountName: external-dns
+serviceAccount:
+  create: true
+  name: external-dns
 %{ if eks ~}
-  serviceAccountAnnotations:
+  annotations:
     eks.amazonaws.com/role-arn: "${eks_service_account}"
 %{ endif ~}
 txtPrefix: "_external_dns."
 txtOwnerId: ${cluster}
 logLevel: info
+policy: sync
 podAnnotations:
   iam.amazonaws.com/role: "${iam_role}"
