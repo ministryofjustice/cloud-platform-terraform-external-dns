@@ -2,15 +2,10 @@ locals {
   external_dns_version = "3.1.0"
 }
 
-data "helm_repository" "bitnami" {
-  name = "bitnami"
-  url  = "https://charts.bitnami.com/bitnami"
-}
-
 resource "helm_release" "external_dns" {
   name       = "external-dns"
   chart      = "external-dns"
-  repository = data.helm_repository.bitnami.metadata[0].name
+  repository = "https://charts.bitnami.com/bitnami"
   namespace  = "kube-system"
   version    = local.external_dns_version
 
