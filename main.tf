@@ -14,11 +14,6 @@ resource "helm_release" "external_dns" {
     eks_service_account = module.iam_assumable_role_admin.this_iam_role_arn
   })]
 
-  depends_on = [
-    var.dependence_kiam
-  ]
-
-
   lifecycle {
     ignore_changes = [keyring]
   }
