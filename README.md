@@ -50,19 +50,7 @@ module "external_dns" {
 }
   ```
 
-## Inputs
+<!--- BEGIN_TF_DOCS --->
 
-| Name                        | Description                                                            | Type     | Default | Required |
-|-----------------------------|---------------------------------------------------------------         |:--------:|:-------:|:--------:|
-| dependence_kiam             | Kiam Dependence variable                                               | string   |         | yes      |
-| iam_role_nodes              | Nodes IAM role ARN in order to create the KIAM/Kube2IAM                | string   |         | yes      |
-| hostzone                    | To solve ACME Challenges. Scope should be limited to hostzone.         | string   |         | yes      |
-| cluster_domain_name         | Value used for externalDNS annotations                                 | string   |         | yes      |
-| eks                         | Are we deploying in EKS or not?                                        | bool     | false   | no       |
-| eks_cluster_oidc_issuer_url | The OIDC issuer URL from the cluster, used for IAM ServiceAccount      | string   |         | no       |
+<!--- END_TF_DOCS --->
 
-
-## Outputs
-
-| Name | Description |
-|------|-------------|

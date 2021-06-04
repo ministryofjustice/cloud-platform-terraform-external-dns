@@ -1,3 +1,11 @@
+locals {
+  domainfilters = {
+    live-1  = [""]
+    manager = ["manager.cloud-platform.service.justice.gov.uk.", "cloud-platform.service.justice.gov.uk.", "integrationtest.service.justice.gov.uk."]
+    default = [var.cluster_domain_name, "integrationtest.service.justice.gov.uk."]
+  }
+}
+
 resource "helm_release" "external_dns" {
   name       = "external-dns"
   chart      = "external-dns"
@@ -6,7 +14,7 @@ resource "helm_release" "external_dns" {
   version    = "4.10.0"
 
   values = [templatefile("${path.module}/templates/values.yaml.tpl", {
-    domainFilters = lookup(var.cluster_r53_domainfilters, terraform.workspace, [var.cluster_domain_name])
+    domainFilters = lookup(local.domainfilters, terraform.workspace, local.domainfilters["default"])
 
     cluster             = terraform.workspace
     iam_role            = var.eks ? "" : aws_iam_role.external_dns.0.name
@@ -17,7 +25,6 @@ resource "helm_release" "external_dns" {
   depends_on = [
     var.dependence_kiam
   ]
-
 
   lifecycle {
     ignore_changes = [keyring]
