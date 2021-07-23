@@ -1,5 +1,3 @@
-image:
-  tag: 0.7.1-debian-10-r68
 sources:
   - service
   - ingress
