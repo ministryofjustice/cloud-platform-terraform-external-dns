@@ -25,3 +25,7 @@ logLevel: info
 policy: sync
 podAnnotations:
   iam.amazonaws.com/role: "${iam_role}"
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
