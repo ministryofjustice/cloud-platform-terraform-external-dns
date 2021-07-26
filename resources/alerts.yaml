@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: external-dns-errors
+  namespace: kube-system
+  labels:
+    prometheus: cloud-platform
+spec:
+  groups:
+  - name: external-dns
+    rules:
+    - alert: ErrorsInExternalDNS
+      expr: external_dns_source_errors_total > 0
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        message: There're erros in external-dns service, it might lack of weight's annotations.
