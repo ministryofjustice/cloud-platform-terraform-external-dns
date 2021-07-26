@@ -16,4 +16,4 @@ spec:
       labels:
         severity: warning
       annotations:
-        message: There're erros in external-dns service, it might lack of weight's annotations.
+        message: Errors found in external-dns service; This may be caused by an ingress rule lacking a weight annotation.
