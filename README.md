@@ -56,6 +56,7 @@ module "external_dns" {
 | Name | Version |
 |------|---------|
 | terraform | >= 0.13 |
+| kubectl | 1.11.2 |
 
 ## Providers
 
@@ -63,6 +64,7 @@ module "external_dns" {
 |------|---------|
 | aws | n/a |
 | helm | n/a |
+| kubectl | 1.11.2 |
 
 ## Modules
 
@@ -79,6 +81,7 @@ module "external_dns" {
 | [aws_iam_role](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) |
 | [aws_iam_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) |
 | [helm_release](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) |
+| [kubectl_manifest](https://registry.terraform.io/providers/gavinbunney/kubectl/1.11.2/docs/resources/manifest) |
 
 ## Inputs
 
