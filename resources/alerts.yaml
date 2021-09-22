@@ -11,7 +11,7 @@ spec:
   - name: external-dns
     rules:
     - alert: ErrorsInExternalDNS
-      expr: external_dns_source_errors_total > 0
+      expr: external_dns_registry_errors_total > 0
       for: 5m
       labels:
         severity: warning
