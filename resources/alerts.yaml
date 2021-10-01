@@ -11,7 +11,7 @@ spec:
   - name: external-dns
     rules:
     - alert: ErrorsInExternalDNS
-      expr: external_dns_registry_errors_total > 0
+      expr: sum(increase(external_dns_registry_errors_total[2h])) > 5
       for: 5m
       labels:
         severity: warning
