@@ -100,3 +100,6 @@ No output.
 
 <!--- END_TF_DOCS --->
 
+## Note
+
+"live-1-external-dns" branch for kops cluster. The "main" branch stores the releases for EKS, and the "live-1-external-dns serves as a kops cluster features branch, which was used for "live-1" cluster.
