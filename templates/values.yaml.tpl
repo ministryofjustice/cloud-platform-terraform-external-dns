@@ -15,16 +15,12 @@ rbac:
 serviceAccount:
   create: true
   name: external-dns
-%{ if eks ~}
   annotations:
     eks.amazonaws.com/role-arn: "${eks_service_account}"
-%{ endif ~}
 txtPrefix: "_external_dns."
 txtOwnerId: ${cluster}
 logLevel: info
 policy: sync
-podAnnotations:
-  iam.amazonaws.com/role: "${iam_role}"
 metrics:
   enabled: true
   serviceMonitor:
