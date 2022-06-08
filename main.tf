@@ -11,7 +11,7 @@ resource "helm_release" "external_dns" {
   chart      = "external-dns"
   repository = "https://charts.bitnami.com/bitnami"
   namespace  = "kube-system"
-  version    = "6.5.2"
+  version    = "6.4.4"
 
   values = [templatefile("${path.module}/templates/values.yaml.tpl", {
     domainFilters = lookup(local.domainfilters, terraform.workspace, local.domainfilters["default"])
