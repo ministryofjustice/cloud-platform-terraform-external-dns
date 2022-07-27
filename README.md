@@ -20,44 +20,45 @@ module "external_dns" {
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13 |
-| kubectl | 1.11.2 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.6.0 |
+| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 1.11.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
-| helm | n/a |
-| kubectl | 1.11.2 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | ~> 2.6.0 |
+| <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.11.2 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| iam_assumable_role_admin | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 3.13.0 |
+| <a name="module_iam_assumable_role_admin"></a> [iam\_assumable\_role\_admin](#module\_iam\_assumable\_role\_admin) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 3.13.0 |
 
 ## Resources
 
-| Name |
-|------|
-| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
-| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
-| [helm_release](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) |
-| [kubectl_manifest](https://registry.terraform.io/providers/gavinbunney/kubectl/1.11.2/docs/resources/manifest) |
+| Name | Type |
+|------|------|
+| [aws_iam_policy.external_dns](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [helm_release.external_dns](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [kubectl_manifest.test](https://registry.terraform.io/providers/gavinbunney/kubectl/1.11.2/docs/resources/manifest) | resource |
+| [aws_iam_policy_document.external_dns_irsa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| cluster\_domain\_name | The cluster domain used for externalDNS | `any` | n/a | yes |
-| dependence\_prometheus | Prometheus module dependences in order to be executed. | `any` | n/a | yes |
-| eks\_cluster\_oidc\_issuer\_url | This is going to be used when we create the IAM OIDC role | `string` | `""` | no |
-| hostzone | n/a | `list(string)` | n/a | yes |
+| <a name="input_cluster_domain_name"></a> [cluster\_domain\_name](#input\_cluster\_domain\_name) | The cluster domain used for externalDNS | `any` | n/a | yes |
+| <a name="input_dependence_prometheus"></a> [dependence\_prometheus](#input\_dependence\_prometheus) | Prometheus module dependences in order to be executed. | `any` | n/a | yes |
+| <a name="input_eks_cluster_oidc_issuer_url"></a> [eks\_cluster\_oidc\_issuer\_url](#input\_eks\_cluster\_oidc\_issuer\_url) | This is going to be used when we create the IAM OIDC role | `string` | `""` | no |
+| <a name="input_hostzone"></a> [hostzone](#input\_hostzone) | n/a | `list(string)` | n/a | yes |
 
 ## Outputs
 
-No output.
+No outputs.
 
 <!--- END_TF_DOCS --->
 
