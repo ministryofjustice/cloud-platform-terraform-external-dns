@@ -1,6 +1,7 @@
 locals {
   domainfilters = {
     live    = [""]
+    live-2  = [""]
     manager = ["manager.cloud-platform.service.justice.gov.uk.", "cloud-platform.service.justice.gov.uk.", "integrationtest.service.justice.gov.uk."]
     default = [var.cluster_domain_name, "integrationtest.service.justice.gov.uk."]
   }
