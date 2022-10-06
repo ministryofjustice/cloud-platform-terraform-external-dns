@@ -5,7 +5,7 @@ terraform {
       source = "hashicorp/aws"
     }
     helm = {
-      source = "hashicorp/helm"
+      source  = "hashicorp/helm"
       version = "~> 2.6.0"
     }
     kubectl = {

@@ -6,7 +6,11 @@ variable "cluster_domain_name" {
   description = "The cluster domain used for externalDNS"
 }
 
-variable "hostzone" {
+variable "hostzones" {
+  type = list(string)
+}
+
+variable "domain_filters" {
   type = list(string)
 }
 
