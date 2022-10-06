@@ -1,20 +1,13 @@
-locals {
-  domainfilters = {
-    live    = [""]
-    manager = ["manager.cloud-platform.service.justice.gov.uk.", "cloud-platform.service.justice.gov.uk.", "integrationtest.service.justice.gov.uk."]
-    default = [var.cluster_domain_name, "integrationtest.service.justice.gov.uk."]
-  }
-}
 
 resource "helm_release" "external_dns" {
   name       = "external-dns"
   chart      = "external-dns"
   repository = "https://charts.bitnami.com/bitnami"
   namespace  = "kube-system"
-  version    = "6.4.4"
+  version    = "6.10.2"
 
   values = [templatefile("${path.module}/templates/values.yaml.tpl", {
-    domainFilters = lookup(local.domainfilters, terraform.workspace, local.domainfilters["default"])
+    domainFilters = var.domain_filters
 
     cluster             = terraform.workspace
     eks_service_account = module.iam_assumable_role_admin.this_iam_role_arn
