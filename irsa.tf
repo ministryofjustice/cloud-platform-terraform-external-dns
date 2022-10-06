@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "external_dns_irsa" {
   statement {
     actions = ["route53:ChangeResourceRecordSets"]
 
-    resources = var.hostzone
+    resources = var.hostzones
   }
 
   statement {
