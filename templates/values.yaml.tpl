@@ -2,6 +2,12 @@ sources:
   - service
   - ingress
 provider: aws
+
+external-dns:
+  interval: "2m"
+  triggerLoopOnEvent: "true"
+
+
 aws:
   region: eu-west-2
   zoneType: public
