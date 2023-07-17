@@ -1,6 +1,8 @@
 sources:
   - service
   - ingress
+interval: 5m
+triggerLoopOnEvent: true
 provider: aws
 aws:
   region: eu-west-2
