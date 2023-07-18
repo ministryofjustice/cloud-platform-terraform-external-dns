@@ -3,6 +3,9 @@ sources:
   - ingress
 interval: 5m
 triggerLoopOnEvent: true
+aws-zones-cache-duration: 1h
+regex-domain-filter:  /.*./g
+regex-domain-exclusion: /cp-.*|yy-.*/g
 provider: aws
 aws:
   region: eu-west-2
