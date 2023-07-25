@@ -1,7 +1,7 @@
 sources:
   - service
   - ingress
-interval: 5m
+interval: 10m
 triggerLoopOnEvent: true
 provider: aws
 aws:
