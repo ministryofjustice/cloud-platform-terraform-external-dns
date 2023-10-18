@@ -17,3 +17,4 @@ spec:
         severity: warning
       annotations:
         message: Errors found in external-dns service; This may be caused by an ingress rule lacking a weight annotation.
+        runbook_url: https://runbooks.cloud-platform.service.justice.gov.uk/external-dns-error.html#how-to-investigate-external-dns-errors
