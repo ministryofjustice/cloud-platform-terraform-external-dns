@@ -5,5 +5,4 @@ module "alert-manger" {
   hostzones           = ["AAATEST"]
   domain_filters      = ["AAATEST"]
 
-  dependence_prometheus = "ignore"
 }
