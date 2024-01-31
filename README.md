@@ -81,7 +81,6 @@ No outputs.
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | >=4.24.0 |
 | <a name="provider_helm"></a> [helm](#provider\_helm) | >=2.6.0 |
-| <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | >=1.13.2 |
 
 ## Modules
 
@@ -95,7 +94,6 @@ No outputs.
 |------|------|
 | [aws_iam_policy.external_dns](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [helm_release.external_dns](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
-| [kubectl_manifest.test](https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs/resources/manifest) | resource |
 | [aws_iam_policy_document.external_dns_irsa](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
