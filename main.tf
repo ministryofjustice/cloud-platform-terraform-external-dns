@@ -21,9 +21,3 @@ resource "helm_release" "external_dns" {
     ignore_changes = [keyring]
   }
 }
-
-resource "kubectl_manifest" "test" {
-  yaml_body = file("${path.module}/resources/alerts.yaml")
-
-  depends_on = [helm_release.external_dns]
-}
