@@ -1,7 +1,3 @@
-variable "dependence_prometheus" {
-  description = "Prometheus module dependences in order to be executed."
-}
-
 variable "cluster_domain_name" {
   description = "The cluster domain used for externalDNS"
 }
