@@ -29,3 +29,4 @@ metrics:
   enabled: true
   serviceMonitor:
     enabled: true
+priorityClassName: system-cluster-critical
