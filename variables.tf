@@ -15,3 +15,9 @@ variable "eks_cluster_oidc_issuer_url" {
   type        = string
   default     = ""
 }
+
+variable "enable_test_cluster_filters" {
+  description = "Enable regex filters for ignoring test cluster domains"
+  type        = bool
+  default     = true
+}
