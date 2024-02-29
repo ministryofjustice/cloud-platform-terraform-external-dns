@@ -11,8 +11,8 @@ domainFilters:
 %{ for d in domainFilters ~}
   - ${d}
 %{ endfor ~}
-regexDomainFilter: '$productionRegexDomainFilter'
-regexDomainExclusion: '$productionRegexDomainExclusion'
+regexDomainFilter: '${productionRegexDomainFilter}'
+regexDomainExclusion: '${productionRegexDomainExclusion}'
 rbac:
   create: true
   apiVersion: v1
