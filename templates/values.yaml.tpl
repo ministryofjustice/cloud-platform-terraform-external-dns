@@ -3,8 +3,6 @@ sources:
   - ingress
 interval: 10m
 triggerLoopOnEvent: true
-regex-domain-filter:  /.*./g
-regex-domain-exclusion: /cp-.*|yy-.*/g
 provider: aws
 aws:
   region: eu-west-2
@@ -13,6 +11,8 @@ domainFilters:
 %{ for d in domainFilters ~}
   - ${d}
 %{ endfor ~}
+regexDomainFilter: '$productionRegexDomainFilter'
+regexDomainExclusion: '$productionRegexDomainExclusion'
 rbac:
   create: true
   apiVersion: v1
