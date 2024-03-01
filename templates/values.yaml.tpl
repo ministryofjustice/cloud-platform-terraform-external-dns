@@ -7,6 +7,7 @@ provider: aws
 aws:
   region: eu-west-2
   zoneType: public
+  batchChangeSize: 4000
 domainFilters:
 %{ for d in domainFilters ~}
   - ${d}
