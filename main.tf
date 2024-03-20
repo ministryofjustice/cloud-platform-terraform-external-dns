@@ -10,8 +10,8 @@ resource "helm_release" "external_dns" {
     domainFilters = var.domain_filters
 
     # For production clusters, we are excluding test cluster domains from being considered by external-dns
-    productionRegexDomainFilter = var.is_live_cluster ? "" : ".*"
-    productionRegexDomainExclusion = var.is_live_cluster ? "" : "cp-.*-.*\\.cloud-platform\\.service\\.justice\\.gov\\.uk$|yy-.*-.*\\.cloud-platform\\.service\\.justice\\.gov\\.uk$"
+    productionRegexDomainFilter = var.is_live_cluster ? ".*" : ""
+    productionRegexDomainExclusion = var.is_live_cluster ? "cp-.*-.*\\.cloud-platform\\.service\\.justice\\.gov\\.uk$|yy-.*-.*\\.cloud-platform\\.service\\.justice\\.gov\\.uk$" : ""
 
     # Set route53 sync interval and zone caching based on whether this is a production cluster or not
     sync_interval = var.is_live_cluster ? "10m" : "60m"
