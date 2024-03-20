@@ -16,8 +16,8 @@ variable "eks_cluster_oidc_issuer_url" {
   default     = ""
 }
 
-variable "enable_test_cluster_filters" {
-  description = "Enable regex filters for ignoring test cluster domains"
+variable "is_live_cluster" {
+  description = "For assigning chart values based on the cluster type"
   type        = bool
   default     = true
 }

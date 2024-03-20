@@ -101,8 +101,8 @@ No outputs.
 | <a name="input_cluster_domain_name"></a> [cluster\_domain\_name](#input\_cluster\_domain\_name) | The cluster domain used for externalDNS | `any` | n/a | yes |
 | <a name="input_domain_filters"></a> [domain\_filters](#input\_domain\_filters) | n/a | `list(string)` | n/a | yes |
 | <a name="input_eks_cluster_oidc_issuer_url"></a> [eks\_cluster\_oidc\_issuer\_url](#input\_eks\_cluster\_oidc\_issuer\_url) | This is going to be used when we create the IAM OIDC role | `string` | `""` | no |
-| <a name="input_enable_test_cluster_filters"></a> [enable\_test\_cluster\_filters](#input\_enable\_test\_cluster\_filters) | Enable regex filters for ignoring test cluster domains | `bool` | `true` | no |
 | <a name="input_hostzones"></a> [hostzones](#input\_hostzones) | n/a | `list(string)` | n/a | yes |
+| <a name="input_is_live_cluster"></a> [is\_live\_cluster](#input\_is\_live\_cluster) | For assigning chart values based on the cluster type | `bool` | `true` | no |
 
 ## Outputs
 
