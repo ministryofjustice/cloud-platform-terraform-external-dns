@@ -1,13 +1,14 @@
 sources:
   - service
   - ingress
-interval: 10m
+interval: '${sync_interval}'
 triggerLoopOnEvent: true
 provider: aws
 aws:
   region: eu-west-2
   zoneType: public
   batchChangeSize: 4000
+  zonesCacheDuration: '${aws_zone_cache_duration}'
 domainFilters:
 %{ for d in domainFilters ~}
   - ${d}

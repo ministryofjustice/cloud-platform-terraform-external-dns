@@ -21,3 +21,9 @@ variable "enable_test_cluster_filters" {
   type        = bool
   default     = true
 }
+
+variable "is_live_cluster" {
+  description = "For assigning chart values based on the cluster type"
+  type        = bool
+  default     = true
+}
