@@ -25,7 +25,7 @@ serviceAccount:
     eks.amazonaws.com/role-arn: "${eks_service_account}"
 txtPrefix: "_external_dns."
 txtOwnerId: ${cluster}
-logLevel: debug
+logLevel: info
 policy: sync
 metrics:
   enabled: true
