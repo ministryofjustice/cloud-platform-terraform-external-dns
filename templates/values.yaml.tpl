@@ -32,3 +32,5 @@ metrics:
   serviceMonitor:
     enabled: true
 priorityClassName: system-cluster-critical
+extraArgs:
+  provider-cache-time: '15m'
