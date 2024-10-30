@@ -34,3 +34,8 @@ metrics:
 priorityClassName: system-cluster-critical
 extraArgs:
   provider-cache-time: '15m'
+resources:
+  requests:
+    memory: 256Mi
+  limits:
+    memory: 512Mi
