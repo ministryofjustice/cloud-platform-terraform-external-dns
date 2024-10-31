@@ -36,6 +36,10 @@ extraArgs:
   provider-cache-time: '15m'
 resources:
   requests:
-    memory: 256Mi
-  limits:
+    cpu: 500m
     memory: 512Mi
+    ephemeral-storage: 50Mi
+  limits:
+    cpu: 2000m
+    memory: 2Gi
+    ephemeral-storage: 2Gi
