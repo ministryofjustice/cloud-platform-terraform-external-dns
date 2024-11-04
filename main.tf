@@ -4,7 +4,7 @@ resource "helm_release" "external_dns" {
   chart      = "external-dns"
   repository = "https://charts.bitnami.com/bitnami"
   namespace  = "kube-system"
-  version    = "8.3.10"
+  version    = "6.20.1"
 
   values = [templatefile("${path.module}/templates/values.yaml.tpl", {
     domainFilters = var.domain_filters
