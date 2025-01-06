@@ -18,7 +18,7 @@ resource "helm_release" "external_dns" {
     aws_zone_cache_duration = "2h"
 
     cluster             = terraform.workspace
-    eks_service_account = module.iam_assumable_role_admin.this_iam_role_arn
+    eks_service_account = module.iam_assumable_role_admin.iam_role_arn
   })]
 
   lifecycle {
