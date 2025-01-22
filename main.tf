@@ -22,12 +22,12 @@ resource "helm_release" "external_dns" {
   })]
 
   set {
-    name  = "global.resources.requests.cpu"
+    name  = "resources.requests.cpu"
     value = "200m" 
   }
 
   set {
-    name  = "global.resources.requests.memory"
+    name  = "resources.requests.memory"
     value = "1024Mi"
   }
 
