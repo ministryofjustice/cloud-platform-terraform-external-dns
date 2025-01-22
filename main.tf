@@ -21,6 +21,16 @@ resource "helm_release" "external_dns" {
     eks_service_account = module.iam_assumable_role_admin.iam_role_arn
   })]
 
+  set {
+    name  = "resources.requests.cpu"
+    value = "200m" 
+  }
+
+  set {
+    name  = "resources.requests.memory"
+    value = "1024Mi"
+  }
+
   lifecycle {
     ignore_changes = [keyring]
   }
