@@ -23,7 +23,7 @@ serviceAccount:
   name: external-dns
   annotations:
     eks.amazonaws.com/role-arn: "${eks_service_account}"
-txtPrefix: "_external_dns."
+txtPrefix: "${txtPrefix}"
 txtOwnerId: ${cluster}
 logLevel: debug
 policy: sync
