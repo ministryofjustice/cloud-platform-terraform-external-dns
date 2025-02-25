@@ -2,7 +2,7 @@
 
 set -e
 
-HOSTED_ZONES=$(cat test_hosted_zones)
+HOSTED_ZONES=$(cat 100_ing_hz)
 
 upsert_record() {
     TXT_OBJ=$(cat $1)
@@ -11,9 +11,28 @@ upsert_record() {
 
     HOSTED_ZONE_ID=$(echo "$TXT_OBJ" | jq -r '.HostedZoneId')
     WEIGHT=$(echo "$TXT_OBJ" | jq '.Weight')
+
+
+    if [ -n "${WEIGHT}" ]; then
+        echo "inside weight"
+        WEIGHT="100"
+    fi
+
+    echo "WEIGHT $WEIGHT"
+
     SET_IDENTIFIER=$(echo "$TXT_OBJ" | jq '.SetIdentifier')
+
     RESOURCE_RECORD_VALUE=$(echo "$TXT_OBJ" | jq '.ResourceRecords[0].Value')
 
+
+    if [ -n "${SET_IDENTIFIER}" ]; then
+        SET_IDENTIFIER=$(echo '"$(date +%s)"')
+
+        # ID=$(echo $RESOURCE_RECORD_VALUE | sed 's/.*resource=ingress\/\(.*\)/\1/' | sed 's/\//-/' | sed 's/\\""//')
+        # SET_IDENTIFIER="$ID-green"
+    fi
+
+    echo "SET ID $SET_IDENTIFIER"
 
     NAME=$(echo "$TXT_OBJ" | jq '.Name')
 
