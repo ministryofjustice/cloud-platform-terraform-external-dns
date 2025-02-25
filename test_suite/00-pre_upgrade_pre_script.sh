@@ -6,7 +6,7 @@ CREATE_NS=$1
 NAMESPACE=jaskaran-dev
 
 if $CREATE_NS; then
-    kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io gatekeeper-validating-webhook-configuration
+    # kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io gatekeeper-validating-webhook-configuration
     sleep 10
     kubectl create namespace $NAMESPACE
 fi

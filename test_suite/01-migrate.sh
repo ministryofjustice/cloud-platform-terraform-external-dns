@@ -50,6 +50,6 @@ echo "$TXT_RECORDS" | jq -rc '.' > compacted_txt_records
 
 export -f upsert_record
 
-parallel -a compacted_txt_records --recend '}\n' --line-buffer --pipe-part --will-cite --block 30 "upsert_record {}"
+parallel -a compacted_txt_records --recend '}\n' --line-buffer --delay 0.5 --pipe-part --will-cite --block 30 "upsert_record {}"
 
 exit 0
