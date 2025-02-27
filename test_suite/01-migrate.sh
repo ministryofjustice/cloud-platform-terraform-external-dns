@@ -2,7 +2,7 @@
 
 set -e
 
-HOSTED_ZONES=$(cat 100_ing_hz)
+HOSTED_ZONES=$(cat test_hosted_zones)
 
 upsert_record() {
     TXT_OBJ=$(cat $1)
@@ -19,10 +19,10 @@ upsert_record() {
 
     NAME=$(echo "$TXT_OBJ" | jq '.Name')
 
-    if [ -z "${SET_IDENTIFIER}"  ] && [ -z "$WEIGHT" ]; then
+    if [ -n "$SET_IDENTIFIER"  ] && [ -n "$WEIGHT" ] && [ "$SET_IDENTIFIER" != null  ] && [ "$WEIGHT" != null ]; then
         echo "Set Id and weight present..."
     else
-        if [ -z "$WEIGHT" ]; then
+        if [ -n "$WEIGHT" ] && [ "$WEIGHT" != null ]; then
             echo "we have a weight and no set identifier"
             # An error occurred (InvalidInput) when calling the ChangeResourceRecordSets operation: Invalid request: Expected exactly one of [Weight, Region, Failover, GeoLocation, MultiValueAnswer, GeoProximityLocation, or CidrRoutingConfig], but found none in Change with [Action=UPSERT, Name=_external_dns.cname.alertmanager.cp-2502-1521.cloud-platform.service.justice.gov.uk., Type=TXT, SetIdentifier=monitoring-alertmanager-proxy-oauth2-proxy-green]j
 
@@ -31,7 +31,7 @@ upsert_record() {
             SET_IDENTIFIER='"'"$ID-green"'"'
         else
             echo "we have no weight..."
-            if [ -z "$SET_IDENTIFIER" ]; then
+            if [ -n "$SET_IDENTIFIER" ] && [ "$SET_IDENTIFIER" != null ]; then
                 echo "We have a set Identifier but no weight, set id: $SET_IDENTIFIER name: $NAME"
                 WEIGHT=100
             else
