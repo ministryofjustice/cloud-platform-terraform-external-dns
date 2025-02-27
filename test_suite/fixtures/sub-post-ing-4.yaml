@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    external-dns.alpha.kubernetes.io/aws-weight: "100"
+    external-dns.alpha.kubernetes.io/set-identifier: ext-dns-ing-4-jaskaran-dev-green
+  name: ext-dns-ing-4
+  namespace: jaskaran-dev
+spec:
+  ingressClassName: default
+  rules:
+  - host: sub2.ext-dns-test-2.cloud-platform.service.justice.gov.uk
+    http:
+      paths:
+      - backend:
+          service:
+            name: ssi-svc
+            port:
+              number: 8080
+        path: /
+        pathType: ImplementationSpecific
+
