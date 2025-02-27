@@ -19,6 +19,7 @@ resource "helm_release" "external_dns" {
 
     cluster             = terraform.workspace
     eks_service_account = module.iam_assumable_role_admin.iam_role_arn
+    txtPrefix           = "_external_dns.%%{record_type}." 
   })]
 
   set {
