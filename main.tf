@@ -22,16 +22,15 @@ resource "helm_release" "external_dns" {
     txtPrefix           = "_external_dns.%%{record_type}."
   })]
 
-  set = [
-    {
-      name  = "resources.requests.cpu"
-      value = "200m"
-    },
-    {
-      name  = "resources.requests.memory"
-      value = "1024Mi"
-    }
-  ]
+  set {
+    name  = "resources.requests.cpu"
+    value = "200m"
+  }
+
+  set {
+    name  = "resources.requests.memory"
+    value = "1024Mi"
+  }
   lifecycle {
     ignore_changes = [keyring]
   }
