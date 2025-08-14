@@ -32,3 +32,8 @@ metrics:
   serviceMonitor:
     enabled: true
 priorityClassName: system-cluster-critical
+image:
+  registry: docker.io
+  repository: bitnamilegacy/external-dns
+  tag: 0.15.1-debian-12-r1
+  pullPolicy: IfNotPresent
