@@ -35,7 +35,7 @@ priorityClassName: system-cluster-critical
 image:
   registry: docker.io
   repository: bitnamilegacy/external-dns
-  tag: 0.15.1-debian-12-r1
+  tag: 0.18.0-debian-12-r4
   pullPolicy: IfNotPresent
 
 
@@ -70,3 +70,6 @@ image:
 global:
   security:
     allowInsecureImages: true
+
+extraArgs:
+  exclude-record-types: AAAA
