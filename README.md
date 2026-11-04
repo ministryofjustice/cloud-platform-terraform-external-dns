@@ -14,6 +14,40 @@ module "external_dns" {
 }
 ```
 
+## Gateway API HTTPRoute discovery
+
+The `gateway-api-httproute` branch retains Service and Ingress discovery and adds
+`gateway-httproute`. It keeps chart `9.0.3`, the existing ExternalDNS `0.18.0`
+image, Route53 permissions, domain filters, sync policy and TXT ownership
+settings unchanged.
+
+Use the branch as the module source:
+
+```hcl
+source = "github.com/ministryofjustice/cloud-platform-terraform-external-dns?ref=gateway-api-httproute"
+```
+
+Install the Gateway API CRDs before upgrading ExternalDNS in each cluster.
+ExternalDNS `0.18.0` uses the served `v1beta1` Gateway and HTTPRoute APIs, even
+when manifests use `v1`. The Gateway API `v1.6.1` CRDs bundled with Envoy Gateway
+`v1.9.3` serve both versions. Check this compatibility when upgrading CRDs.
+The existing chart's ClusterRole and binding already grant read access to
+Gateways, HTTPRoutes and namespaces; no additional RBAC resources are needed.
+
+DNS names come from `HTTPRoute.spec.hostnames`, intersected with the parent
+Gateway listener's hostname. The route must be accepted by the Gateway and the
+Gateway must expose an address in its status. A Service hostname annotation is
+not needed for this flow. Keep DNS names within the existing domain filters
+and permitted Route53 zones.
+
+For an existing Service-based DNS record, establish the accepted HTTPRoute
+before removing its Service hostname annotation. Existing Service/Ingress
+sources must remain enabled to preserve current NGINX DNS records.
+
+Run `terraform init -backend=false`, `terraform validate` and `terraform test`
+to check the module. Native mocked tests require Terraform >= 1.7 and do not
+deploy resources.
+
 
 <!--- BEGIN_TF_DOCS --->
 ## Requirements
