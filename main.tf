@@ -2,9 +2,9 @@
 resource "helm_release" "external_dns" {
   name       = "external-dns"
   chart      = "external-dns"
-  repository = "oci://registry-1.docker.io/bitnamicharts"
+  repository = "https://kubernetes-sigs.github.io/external-dns/"
   namespace  = "kube-system"
-  version    = "9.0.3"
+  version    = "1.23.0"
 
   values = [templatefile("${path.module}/templates/values.yaml.tpl", {
     domainFilters = var.domain_filters
